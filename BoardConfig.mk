@@ -1,3 +1,4 @@
+
 #
 # Copyright (C) 2014 Prashant Gahlot (proxthehacker@gmail.com)
 #
@@ -17,11 +18,13 @@
 # inherit from common msm8610-common
 -include device/motorola/msm8610-common/BoardConfigCommon.mk
 
+-include vendor/motorola/condor/BoardConfigVendor.mk
+
 LOCAL_PATH := device/motorola/condor
 
 # Kernel
 TARGET_KERNEL_CONFIG := cm_condor_defconfig
-TARGET_KERNEL_SOURCE := kernel/motorola/msm8610
+TARGET_KERNEL_SOURCE := /home/roybabu/rom/pa/kernel/motorola/msm8610
 
 # Storage & partiiton
 BOARD_BOOTIMAGE_PARTITION_SIZE := 10444800
@@ -37,9 +40,14 @@ TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/ramdisk/fstab.qcom
 # Asserts
 TARGET_OTA_ASSERT_DEVICE := xt1021,xt1022,xt1023,condor_umts,condor_umtsds,condor
 
+# Disable basic dexpreopt enabled from msm8610-common
+#WITH_DEXPREOPT := false
+
 # Init
 TARGET_INIT_VENDOR_LIB := libinit_condor
 TARGET_RECOVERY_DEVICE_MODULES := libinit_condor
 
 BOARD_SEPOLICY_DIRS += \
     device/motorola/condor/sepolicy
+
+
